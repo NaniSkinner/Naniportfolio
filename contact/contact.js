@@ -1,12 +1,22 @@
 const form = document.getElementById('contact-form');
 const inquiry = document.getElementById('inquiry');
 const eventFields = document.getElementById('event-fields');
+const eventFormat = document.getElementById('event_format');
+const venueField = document.getElementById('venue-field');
+const venueInput = document.getElementById('event_location');
+function toggleVenueField() {
+  const show = !eventFields.disabled && ['In person', 'Hybrid'].includes(eventFormat.value);
+  venueField.hidden = !show;
+  venueInput.disabled = !show;
+}
+eventFormat.addEventListener('change', toggleVenueField);
 const status = document.getElementById('form-status');
 const button = form.querySelector('button[type="submit"]');
 function toggleEventFields() {
   const show = ['Speaking', 'Workshops'].includes(inquiry.value);
   eventFields.hidden = !show;
   eventFields.disabled = !show;
+  toggleVenueField();
 }
 inquiry.addEventListener('change', toggleEventFields);
 toggleEventFields();
@@ -42,6 +52,6 @@ form.addEventListener('submit', async (event) => {
   } finally {
     clearTimeout(timeout);
     button.disabled = false;
-    button.textContent = 'Send message ↗';
+    button.textContent = 'Send message 🍵';
   }
 });
