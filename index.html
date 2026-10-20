@@ -356,6 +356,8 @@
       margin-bottom: var(--space-2);
     }
     .building__visual {
+      min-width: 0;
+      width: 100%;
       background: var(--color-surface-offset);
       border-radius: var(--radius-xl);
       aspect-ratio: 4/3;
@@ -597,13 +599,12 @@
     }
     .speaking__grid {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
       gap: var(--space-16);
       align-items: start;
     }
     .speaking__intro {
-      position: sticky;
-      top: 100px;
+      min-width: 0;
     }
     .speaking__title {
       font-family: var(--font-display);
@@ -936,9 +937,9 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#speaking">Speaking</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="mailto:skinner.galvez@gmail.com" class="nav__cta">Let's talk</a></li>
+        <li><a href="/contact/" class="nav__cta">Let's talk</a></li>
       </ul>
-      <button class="nav__mobile-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav-links').classList.toggle('open')">
+      <button class="nav__mobile-toggle" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false" onclick="const open = document.getElementById('nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', String(open))">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12h18M3 6h18M3 18h18"/>
         </svg>
@@ -1305,53 +1306,42 @@
 
   <!-- SPEAKING -->
   <section class="speaking" id="speaking">
-    <div class="container">
+    <div class="container--wide">
       <div class="speaking__grid">
         <div class="speaking__intro fade-in">
-          <p class="section-label">Speaking</p>
-          <h2 class="speaking__title">Talks that <em>move people</em> forward.</h2>
-          <p class="speaking__body">
-            I talk about what it actually feels like to build with AI, adopt it inside organizations, and help people evolve their roles instead of being replaced by them.
-          </p>
-          <p class="speaking__body">
-            For tech teams, HR & People orgs, education conferences, and developer communities.
-          </p>
-          <a href="mailto:skinner.galvez@gmail.com" class="btn-primary" style="margin-top: var(--space-2);">
-            Book a talk
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <p class="section-label">Speaking &amp; Workshops</p>
+          <h2 class="speaking__title">Building AI <em>with educators,</em> for education.</h2>
+          <p class="speaking__body">I bring experience in education, product engineering, and technical advising to talks and hands-on workshops that help educators and teams understand AI, build useful tools, and make informed decisions.</p>
+          <p class="speaking__body">For teachers and education leaders, as well as organizations and teams building products for education.</p>
+          <p class="speaking__body">Each session is shaped around your use case and needs, whether that means exploring an idea, developing a plan, or building a prototype.</p>
+          <a href="/contact/" class="btn-primary" style="margin-top: var(--space-2);">Book a talk or workshop <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <p style="font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-4);">Sessions can be in English or Spanish.</p>
         </div>
-
         <ul class="talks-list" role="list">
           <li class="talk-item reveal fade-in">
             <p class="talk-item__num">01</p>
-            <h3 class="talk-item__title">What Adopting AI as a Company Really Looks Like</h3>
-            <p class="talk-item__desc">The gap between the AI strategy deck and what actually happens on the ground — and how to close it.</p>
+            <h3 class="talk-item__title">From Classroom Problem to AI Tool</h3>
+            <p class="talk-item__desc">How educators can turn a real teaching need into a useful AI tool, starting with the problem and shaping an approach that fits their classroom.</p>
           </li>
           <li class="talk-item reveal fade-in">
             <p class="talk-item__num">02</p>
-            <h3 class="talk-item__title">How to Empower Your Employees with AI</h3>
-            <p class="talk-item__desc">Practical frameworks for upskilling your existing team without overwhelming them or losing the people who matter.</p>
+            <h3 class="talk-item__title">AI That Supports Teachers’ Judgment</h3>
+            <p class="talk-item__desc">Practical ways to use AI for planning, organizing information, and tracking learning while keeping educators responsible for decisions.</p>
           </li>
           <li class="talk-item reveal fade-in">
             <p class="talk-item__num">03</p>
-            <h3 class="talk-item__title">What Is a Product Engineer?</h3>
-            <p class="talk-item__desc">The emerging role that blurs the line between PM, engineer, and builder — and why it matters for your org right now.</p>
+            <h3 class="talk-item__title">Product Engineering: Build What People Will Use</h3>
+            <p class="talk-item__desc">How observing users, understanding their pain points, and testing ideas with them can turn a real need into a product that fits their daily work.</p>
           </li>
           <li class="talk-item reveal fade-in">
             <p class="talk-item__num">04</p>
-            <h3 class="talk-item__title">Testing with AI (Code)</h3>
-            <p class="talk-item__desc">How to think about QA, validation, and trust when AI is writing significant portions of your codebase.</p>
+            <h3 class="talk-item__title">From AI Pilot to Everyday School Practice</h3>
+            <p class="talk-item__desc">How education leaders can identify a useful starting point, support teachers, and evaluate whether an AI tool fits the way their school works.</p>
           </li>
           <li class="talk-item reveal fade-in">
             <p class="talk-item__num">05</p>
-            <h3 class="talk-item__title">How Not to Be Left Behind in the Era of AI</h3>
-            <p class="talk-item__desc">A mentor-style talk on building adaptability as your core skill — for anyone navigating the new shape of work.</p>
-          </li>
-          <li class="talk-item reveal fade-in">
-            <p class="talk-item__num">06</p>
-            <h3 class="talk-item__title">Life After Gauntlet</h3>
-            <p class="talk-item__desc">What an intensive AI engineering program actually teaches you — and what no one tells you about what comes next.</p>
+            <h3 class="talk-item__title">Learning to Build With AI Without Outsourcing Your Thinking</h3>
+            <p class="talk-item__desc">How to ask better questions, check evidence, test assumptions, and retain ownership of your work when building with AI.</p>
           </li>
         </ul>
       </div>
@@ -1382,7 +1372,7 @@
           <a href="https://x.com/NANISKINNER" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="mailto:skinner.galvez@gmail.com" class="social-link" aria-label="Email">
+          <a href="/contact/" class="social-link" aria-label="Contact Nani">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
           </a>
         </div>
@@ -1399,7 +1389,7 @@
           <a href="#work">Work</a>
           <a href="#speaking">Speaking</a>
           <a href="#about">About</a>
-          <a href="mailto:skinner.galvez@gmail.com">Contact</a>
+          <a href="/contact/">Contact</a>
         </nav>
         <span class="footer__copy">© 2026 Nani Skinner · Austin, TX</span>
         <span style="font-size:var(--text-xs);color:var(--color-text-faint);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;letter-spacing:0.03em;">Made with 🍵</span>
